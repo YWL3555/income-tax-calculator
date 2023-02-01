@@ -5,8 +5,8 @@ class TaxCalculator
       @annual_salary = annual_salary
     end
   
-    def monthly_tax
-      (calc_tax(@annual_salary) / 12.0).round(2)
+    def tax
+      calc_tax(@annual_salary)
     end
   
     private
@@ -38,8 +38,8 @@ class TaxCalculator
     end
   
     def generate_monthly_payslip
-      gross_monthly_income = (annual_salary / 12.0).round(2)
-      monthly_tax = TaxCalculator.new(annual_salary).monthly_tax
+      gross_monthly_income = (annual_salary / 12).round(2)
+      monthly_tax = (TaxCalculator.new(annual_salary).tax / 12).round(2)
       net_monthly_income = (gross_monthly_income - monthly_tax).round(2)
   
       puts "Monthly Payslip for: #{name}"
