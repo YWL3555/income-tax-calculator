@@ -38,14 +38,14 @@ class TaxCalculator
     end
   
     def generate_monthly_payslip
-      gross_monthly_income = (annual_salary / 12).round(2)
-      monthly_tax = (TaxCalculator.new(annual_salary).tax / 12).round(2)
+      gross_monthly_income = (annual_salary / 12.0).round(2)
+      monthly_tax = (TaxCalculator.new(annual_salary).tax / 12.0).round(2)
       net_monthly_income = (gross_monthly_income - monthly_tax).round(2)
   
       puts "Monthly Payslip for: #{name}"
-      puts "Gross Monthly Income: $#{gross_monthly_income}"
-      puts "Monthly Income Tax: $#{monthly_tax}"
-      puts "Net Monthly Income: $#{net_monthly_income}"
+      puts "Gross Monthly Income: $#{sprintf('%.2f',gross_monthly_income)}"
+      puts "Monthly Income Tax: $#{sprintf('%.2f',monthly_tax)}"
+      puts "Net Monthly Income: $#{sprintf('%.2f',net_monthly_income)}"
     end
   end
   
