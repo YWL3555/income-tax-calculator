@@ -11,7 +11,7 @@ class Employee
       @monthly_tax = (TaxCalculator.new(annual_salary).tax / 12.0).round(2)
       @net_monthly_income = (@gross_monthly_income - @monthly_tax).round(2)
 
-      print_employee_details      
+      #print_employee_details      
     end
 
     private
