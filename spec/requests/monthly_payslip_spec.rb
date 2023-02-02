@@ -64,5 +64,26 @@ RSpec.describe "Monthly Payslip", type: :request do
               expect(JSON.parse(response.body)).to eq(expected_response)
             end
         end
+
+        context "with valid params" do
+            let(:employee_name) { "John" }
+            let(:annual_salary) { 80000 }
+            let(:params) { { employee_name: employee_name, annual_salary: annual_salary } }
+
+            it "creates a new Tax Record" do
+              expect {
+                post "/monthly_payslip", params: params
+              }.to change(TaxRecord, :count).by(1)
+            end
+      
+            it "saves the tax record to the database" do
+              post "/monthly_payslip", params: params
+              record = TaxRecord.last
+              expect(record.employee_name).to eq(employee_name)
+              expect(record.annual_salary).to eq('80000.00')
+              expect(record.monthly_income_tax).to eq('833.33')
+            end
+        end
+
     end
 end
