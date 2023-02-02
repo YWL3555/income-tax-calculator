@@ -5,7 +5,7 @@ class EmployeesController < ApplicationController
       annual_salary = params[:annual_salary].to_f
 
       if annual_salary <= 0
-        render json: { error: "Annual salary must be a positive number." }, status: :bad_request
+        render json: { error: "Annual salary must be a positive amount." }, status: :bad_request
       else
         employee = Employee.new(employee_name, annual_salary)
         employee.generate_monthly_payslip
