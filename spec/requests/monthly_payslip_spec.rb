@@ -85,5 +85,17 @@ RSpec.describe "Monthly Payslip", type: :request do
             end
         end
 
+        context "with invalid params" do
+            let(:employee_name) { "John" }
+            let(:annual_salary) { "blablabla" }
+            let(:params) { { employee_name: employee_name, annual_salary: annual_salary } }
+
+            it "returns status code 400" do
+              post "/monthly_payslip", params: params
+              expect(response).to have_http_status(400)
+            end
+
+        end
+
     end
 end
