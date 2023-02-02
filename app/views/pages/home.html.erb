@@ -1,12 +1,56 @@
-<form action="/monthly_payslip" method="post">
-  <div class="form-group">
-    <label for="employee_name">Employee Name</label>
-    <input type="text" class="form-control" id="employee_name" name="employee_name" required>
-  </div>
-  <div class="form-group">
-    <label for="annual_salary">Annual Salary</label>
-    <input type="number" class="form-control" id="annual_salary" name="annual_salary" required>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
+  <h1 class="mb-6 text-3xl font-medium w-64">Enter employee details here:</h1>
+  <form action="/monthly_payslip" method="post">
+    <div class="form-group mb-6">
+      <input type="text" class="form-control block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="employee_name" name="employee_name" placeholder="Employee name" required>
+    </div>
+    <div class="form-group mb-6">
+      <input type="number" class="form-control block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="annual_salary" name="annual_salary" placeholder="Annual salary" required>
+    </div>
+    <button type="submit" class="
+      w-full
+      px-6
+      py-2.5
+      bg-blue-600
+      text-white
+      font-medium
+      text-xs
+      leading-tight
+      uppercase
+      rounded
+      shadow-md
+      hover:bg-blue-700 hover:shadow-lg
+      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+      active:bg-blue-800 active:shadow-lg
+      transition
+      duration-150
+      ease-in-out">Submit</button>
+  </form>
+</div>
 
