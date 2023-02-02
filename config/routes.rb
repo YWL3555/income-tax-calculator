@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  root to: 'pages#home'
   resources :tax_records, only: [:index]
   post '/monthly_payslip', to: 'employees#monthly_payslip'
 
