@@ -19,7 +19,10 @@ RSpec.describe "Monthly Payslip", type: :request do
                 "monthly_income_tax" => 500.0,
                 "net_monthly_income" => 4500.0,
               }
-              expect(JSON.parse(response.body)).to eq(expected_response)
+              responseBody = JSON.parse(response.body)
+              responseBody.delete("timestamp")
+              responseBody.delete("annual_salary")
+              expect(responseBody).to eq(expected_response)
             end
         end
 
@@ -40,7 +43,10 @@ RSpec.describe "Monthly Payslip", type: :request do
                 "monthly_income_tax" => 4000.0,
                 "net_monthly_income" => 12666.67,
               }
-              expect(JSON.parse(response.body)).to eq(expected_response)
+              responseBody = JSON.parse(response.body)
+              responseBody.delete("timestamp")
+              responseBody.delete("annual_salary")
+              expect(responseBody).to eq(expected_response)
             end
         end
 
@@ -61,7 +67,10 @@ RSpec.describe "Monthly Payslip", type: :request do
                 "monthly_income_tax" => 837.08,
                 "net_monthly_income" => 5842.09,
               }
-              expect(JSON.parse(response.body)).to eq(expected_response)
+              responseBody = JSON.parse(response.body)
+              responseBody.delete("timestamp")
+              responseBody.delete("annual_salary")
+              expect(responseBody).to eq(expected_response)
             end
         end
 
