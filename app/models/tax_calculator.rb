@@ -1,9 +1,3 @@
-require 'redis'
-
-$redis = Redis.new(host: "localhost")
-
-$redis.flushdb
-
 class TaxCalculator
     TAX_BRACKET = [[20000, 0], [40000, 0.1], [80000, 0.2], [180000, 0.3], [Float::INFINITY, 0.4]]
   
