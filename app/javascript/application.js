@@ -19,10 +19,10 @@ $(document).ready(function(){
             data: form.serialize(), // serializes the form's elements.
             success: function(data)
             {   
-               $("#employeeName").text(data.employee_name);
-               $("#grossMonthlyIncome").text(data.gross_monthly_income);
-               $("#monthlyIncomeTax").text(data.monthly_income_tax);
-               $("#netMonthlyIncome").text(data.net_monthly_income);
+               $("#employeeName").text("$"+data.employee_name);
+               $("#grossMonthlyIncome").text("$"+data.gross_monthly_income);
+               $("#monthlyIncomeTax").text("$"+data.monthly_income_tax);
+               $("#netMonthlyIncome").text("$"+data.net_monthly_income);
             }
         });
         
