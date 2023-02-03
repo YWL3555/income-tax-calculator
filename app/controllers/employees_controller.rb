@@ -9,8 +9,9 @@ class EmployeesController < ApplicationController
       else
         employee = Employee.new(employee_name, annual_salary)
         employee.generate_monthly_payslip
+        time_now = Time.now.to_s
         TaxRecord.create!(
-          timestamp: Time.now.to_s, 
+          timestamp: time_now, 
           employee_name: employee.name, 
           annual_salary: sprintf('%.2f', employee.annual_salary).to_s, 
           monthly_income_tax: sprintf('%.2f', employee.monthly_tax).to_s
@@ -19,7 +20,9 @@ class EmployeesController < ApplicationController
           employee_name: employee.name,
           gross_monthly_income: employee.gross_monthly_income,
           monthly_income_tax: employee.monthly_tax,
-          net_monthly_income: employee.net_monthly_income
+          net_monthly_income: employee.net_monthly_income,
+          annual_salary: sprintf('%.2f', employee.annual_salary).to_s,
+          timestamp: time_now
         }
       end
     end
