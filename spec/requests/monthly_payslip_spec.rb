@@ -16,8 +16,8 @@ RSpec.describe "Monthly Payslip", type: :request do
               expected_response = {
                 "employee_name" => employee_name,
                 "gross_monthly_income" => 5000.0,
-                "monthly_income_tax" => 500.0,
-                "net_monthly_income" => 4500.0,
+                "monthly_income_tax" => 258.33,
+                "net_monthly_income" => 4741.67,
               }
               responseBody = JSON.parse(response.body)
               responseBody.delete("timestamp")
@@ -40,8 +40,8 @@ RSpec.describe "Monthly Payslip", type: :request do
               expected_response = {
                 "employee_name" => employee_name,
                 "gross_monthly_income" => 16666.67,
-                "monthly_income_tax" => 4000.0,
-                "net_monthly_income" => 12666.67,
+                "monthly_income_tax" => 2891.67,
+                "net_monthly_income" => 13775.0,
               }
               responseBody = JSON.parse(response.body)
               responseBody.delete("timestamp")
@@ -64,8 +64,8 @@ RSpec.describe "Monthly Payslip", type: :request do
               expected_response = {
                 "employee_name" => employee_name,
                 "gross_monthly_income" => 6679.17,
-                "monthly_income_tax" => 837.08,
-                "net_monthly_income" => 5842.09,
+                "monthly_income_tax" => 544.29,
+                "net_monthly_income" => 6134.88,
               }
               responseBody = JSON.parse(response.body)
               responseBody.delete("timestamp")
@@ -90,7 +90,7 @@ RSpec.describe "Monthly Payslip", type: :request do
               record = TaxRecord.last
               expect(record.employee_name).to eq(employee_name)
               expect(record.annual_salary).to eq('80000.00')
-              expect(record.monthly_income_tax).to eq('833.33')
+              expect(record.monthly_income_tax).to eq('541.67')
             end
         end
 
