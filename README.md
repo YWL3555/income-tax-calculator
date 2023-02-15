@@ -1,13 +1,24 @@
-# Description
+# Income tax calculator
 
-This branch implements a caching pattern into generate payslip function, to optimize the performance of calculating the tax amount.
+### ***Malaysia tax rate is used in this application***
 
-Github actions is also added into this branch, so that it will triggers the Rspec automated unit test on every push.
+## Description
 
-Besides that, there are two more files added into the code repo, i.e., **Dockerfile** and **docker-compose.yml**. By using these two files, the project can generate an docker image, and run as container.
+The idea of this application is first started as a technical interview question, and I now decided to keep developing and enhancing it as my pet project.
 
-
-To run the application in docker, use this command:
+## Instruction
+1. Run this command:
 ```
 docker-compose up --build
 ```
+
+2. Open ***localhost:3000*** on web browser to use the application.
+
+# User Interface
+This app implements a simple UI frontend using Tailwind and JQuery.
+
+Users can send a POST API request by submitting the form and get the monthly payslip generated from rails. A table also displayed on the right side, listing out all the tax records from database.
+
+A snapshot showing the frontend page, is attached below:
+
+<img width="1431" alt="Screenshot 2023-02-03 at 12 13 06 PM" src="https://user-images.githubusercontent.com/45376126/216511417-e8b79246-deb4-4619-adfb-dcb329846d7d.png">
