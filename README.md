@@ -26,3 +26,4 @@ A snapshot showing the frontend page, is attached below:
 ## TBD
 - Create table for tax brackets
 - Create page for updating tax brackets
+- Add tax brackets for different countries
