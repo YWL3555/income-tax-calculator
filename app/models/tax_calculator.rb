@@ -1,6 +1,19 @@
 class TaxCalculator
-    TAX_BRACKET = [[5000, 0], [20000, 0.01], [35000, 0.03], [50000, 0.08], [70000, 0.13], [100000, 0.21], [250000, 0.24], [400000, 0.245],[600000, 0.25], [1000000, 0.26], [2000000, 0.28],[Float::INFINITY, 0.3]]
-  
+    TAX_BRACKETS = [
+      { upper_limit: 5000, rate: 0, base_tax: 0 },
+      { upper_limit: 20000, rate: 1, base_tax: 0 },
+      { upper_limit: 35000, rate: 3, base_tax: 150 },
+      { upper_limit: 50000, rate: 8, base_tax: 600 },
+      { upper_limit: 70000, rate: 13, base_tax: 1800 },
+      { upper_limit: 100000, rate: 21, base_tax: 4400 },
+      { upper_limit: 250000, rate: 24, base_tax: 10700 },
+      { upper_limit: 400000, rate: 24.5, base_tax: 46700 },
+      { upper_limit: 600000, rate: 25, base_tax: 83450 },
+      { upper_limit: 1000000, rate: 26, base_tax: 133450 },
+      { upper_limit: 2000000, rate: 28, base_tax: 237450 },
+      { upper_limit: Float::INFINITY, rate: 30, base_tax: 517450 }
+    ]
+
     def initialize(annual_salary)
       @annual_salary = annual_salary
     end
@@ -15,24 +28,25 @@ class TaxCalculator
       
 
       if $redis.exists(income) > 0
-        total_tax = $redis.get(income).to_f
+        tax = $redis.get(income).to_f
         puts "Tax retrived from redis"
       else
-        total_tax = 0
-        last_amount = 0
-        puts "Start calculating"
-        TAX_BRACKET.each do |amount, tax_rate|
-          if income < amount
-            total_tax += (income - last_amount) * tax_rate
+        tax = 0
+        TAX_BRACKETS.each_with_index do |bracket, index|
+          previous_upper_limit = index.zero? ? 0 : TAX_BRACKETS[index - 1][:upper_limit]
+
+          if income <= bracket[:upper_limit]
+            # Calculate tax for the income within this bracket
+            base_tax = bracket[:base_tax]
+            rate = bracket[:rate]
+            excess_income = income - previous_upper_limit
+
+            # Calculate the tax using the base tax and the excess income
+            tax = base_tax + (excess_income * (rate / 100.0)).round
             break
-          else
-            total_tax += (amount - last_amount) * tax_rate
-            last_amount = amount
           end
         end
-        puts "Set tax to redis"
-        $redis.set(income, total_tax)
       end  
-      total_tax
+      tax
     end
 end
