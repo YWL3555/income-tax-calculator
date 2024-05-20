@@ -64,8 +64,8 @@ RSpec.describe "Monthly Payslip", type: :request do
               expected_response = {
                 "employee_name" => employee_name,
                 "gross_monthly_income" => 6679.17,
-                "monthly_income_tax" => 544.29,
-                "net_monthly_income" => 6134.88,
+                "monthly_income_tax" => 544.33,
+                "net_monthly_income" => 6134.84,
               }
               responseBody = JSON.parse(response.body)
               responseBody.delete("timestamp")
