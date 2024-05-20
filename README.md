@@ -22,3 +22,7 @@ Users can send a POST API request by submitting the form and get the monthly pay
 A snapshot showing the frontend page, is attached below:
 
 <img width="1431" alt="Screenshot 2023-02-03 at 12 13 06 PM" src="https://user-images.githubusercontent.com/45376126/216511417-e8b79246-deb4-4619-adfb-dcb329846d7d.png">
+
+## TBD
+- Create table for tax brackets
+- Create page for updating tax brackets
